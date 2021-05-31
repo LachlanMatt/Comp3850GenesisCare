@@ -31,6 +31,8 @@ Need to install
     * Win64 download: https://github.com/UB-Mannheim/tesseract/wiki 
     * (Mac untested)
     * Mac install (using homebrew): brew install tesseract 
+* Docker Desktop
+    * https://docs.docker.com/docker-for-windows/install/
 
 ## Format
 Input:
@@ -54,6 +56,13 @@ Steps to use:
 4. Output will be Reult_date_time.csv in the output folder (configurable):
     * ./output/
 
+## Docker
+The application has been containerised utilising Docker. This requires the person in charge of deploying the application to only have Docker installed to download and deploy the latest version of the application. From here, the container image can be downloaded to a local directory and run using the command line using the following command; `docker run -it <whatever-it-was-named-earlier>`.
+
+To build using docker from scratch:
+The source code must be downloaded to a local directory. From here, the command `docker build -t <whatever-you-want-to-call-it> .` will build the container in the current directory (. being the keyword for current directory in bash). This process can take a while depending on your internet connection.
+
+After the container has been built, it is run using the command above.
 
 ## Testing
 Steps to test:
