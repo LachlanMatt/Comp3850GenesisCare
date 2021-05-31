@@ -33,6 +33,8 @@ Need to install
     * Mac install (using homebrew): brew install tesseract 
 * Docker Desktop
     * https://docs.docker.com/docker-for-windows/install/
+    * Pull the Container: docker pull jakemay95/comp3850genesiscare
+    * Repository Link: https://hub.docker.com/r/jakemay95/comp3850genesiscare
 
 ## Format
 Input:
