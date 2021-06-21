@@ -79,12 +79,12 @@ For Version 0.5
 ## Features
 Current:
 * Can detect the important text from simple images
+* Utilise Docker to allow for easy devloyment
 Planned:
 * Can use a document scanner function to detect text in difficult images
-* Utilise Docker to allow for easy devloyment
 
 ## Success
-Currently performs at 33-47% success rate on results 2-4 (excluding brand name) for a given testset of reasonable images (correct orientation, angle, resolution).
+Currently performs at 26-47% success rate on results 2-4 (excluding brand name) for a given testset of reasonable images (correct orientation, angle, resolution).
 
 ## Drawbacks
 * Can not yet handle images with multiple boxes.  
@@ -98,7 +98,7 @@ Currently performs at 33-47% success rate on results 2-4 (excluding brand name) 
 The short term plans/goals of the projects are:
 * Implement a document scanner to increase the range of images the system can successfully process
    * OnlineDocScanner.py is a (low-efficacy) implementation of this
-* Implement Docker integration to allow for easier deployment and development of the API
+* Implement Docker integration to allow for easier deployment and development of the API (done)
    * https://www.docker.com/
    * https://hub.docker.com/search?q=&type=edition&offering=community
 * Expand medical dictionary for brand and chemical names through the use of the PBS
