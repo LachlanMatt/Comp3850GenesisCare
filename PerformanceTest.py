@@ -61,52 +61,65 @@ def calculateAccuracy(Result, Testcase):
     count = 0
     total = 0
     print("i, j, Result, r, t:  i j Result Processed Testcase")
-    for i in range(len(Result)):
-        #ignore row/col 0 as they are headers
-        if (i==0):
-            continue
-        for j in range(len(Result[i])):
-            if (j==0):
-                print("\n"+Result[i][j])
-                continue
-            #have only 0 brackets or a bracket pair
-            process = re.search(r"(\w+|/|\-| )*(\((\w+|/|\-| )*\))*(\w+|/|\-| )*", Result[i][j])
-            # process2 = re.search("(\w+|/|\-| )*(\((\w+|/|\-| )*\))*(\w+|/|\-| )*", Result[i][j])
-            # if(process2):
-            #     print("\nbrackets: ", process2)
-            r = process[0]
-            # r = re.escape(Result[i][j])
-            # t = re.escape(Testcase[i][j])
-            # r = (Result[i][j])
-            t = Testcase[i][j]
-            # print("i, j, Result, r, t: ", i, j, Result[i][j], r, t)
-            #remove spaces and other annoyign characters
-            R = re.sub("[^a-zA-Z0-9\-\/\(\)]","", r)
-            T = re.sub("[^a-zA-Z0-9\-\/\(\)]","", t)
-            print("i, j, Result, r, t: ", i, j, Result[i][j], R, T)
-            # print (re.match(".*"+r+".*",t), re.match(".*"+t+".*",r))
-            
-            total = total + 1
-            if (re.match(".*"+R+".*",T) or re.match(".*"+T+".*",R)):
-                count = count + 1
-                print("count, total: ", count, total)
+    
+    #ignore row 0 as they are headers
+    iR = 1
+    iT = 1
+    while iR < len(Result) and iT < len(Testcase) :
+        if (Result[iR][0] == Testcase[iT][0]):
+            for j in range(len(Result[iR])):
+                #ignore col 0 as they are headers
+                if (j==0):
+                    print("\n"+Result[iR][j])
+                    continue
+                #have only 0 brackets or a bracket pair
+                process = re.search(r"(\w+|/|\-| )*(\((\w+|/|\-| )*\))*(\w+|/|\-| )*", Result[iR][j])
+                # process2 = re.search("(\w+|/|\-| )*(\((\w+|/|\-| )*\))*(\w+|/|\-| )*", Result[i][j])
+                # if(process2):
+                #     print("\nbrackets: ", process2)
+                r = process[0]
+                # r = re.escape(Result[i][j])
+                # t = re.escape(Testcase[i][j])
+                # r = (Result[i][j])
+                t = Testcase[iT][j]
+                # print("i, j, Result, r, t: ", i, j, Result[i][j], r, t)
+                #remove spaces and other annoyign characters
+                R = re.sub("[^a-zA-Z0-9\-\/\(\)]","", r)
+                T = re.sub("[^a-zA-Z0-9\-\/\(\)]","", t)
+                print("i, j, Result, r, t: ", iR, j, Result[iR][j], R, T)
+                # print (re.match(".*"+r+".*",t), re.match(".*"+t+".*",r))
+                
+                total = total + 1
+                if (re.match(".*"+R+".*",T) or re.match(".*"+T+".*",R)):
+                    count = count + 1
+                    print("count, total: ", count, total)
+            iR+=1
+            iT+=1
+        elif (Result[iR][0] < Testcase[iT][0]):
+            iR +=1
+        elif (Result[iR][0] > Testcase[iT][0]):
+            iT +=1
     if (count==0):  
         return 0
     return round(count/total*100, 2)
 
 #run the main program
-PE.runProgram()
+# PE.runProgram()
 
 #import the data and calculate the accuracy
 arr1 = importResult()
 Result = np.loadtxt(outputPath+arr1, dtype = 'str', delimiter = ",")
 arr2 = importTestCase()
 Testcase = np.loadtxt(testPath+arr2, dtype = 'str', delimiter = ",")
+# print(Result)
+# print(Testcase)
+SortedTest = Testcase[Testcase[:, 0].argsort()]
+SortedResult = Result[Result[:, 0].argsort()]
 # print (arr1)
 # print (arr2)
 # print (Result)
 # print (Testcase)
-accuracy = calculateAccuracy(Result, Testcase)
+accuracy = calculateAccuracy(SortedResult, SortedTest)
 print("\naccuracy: "+str(accuracy)+"%")
 
 #print the time the system took to run

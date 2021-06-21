@@ -27,7 +27,7 @@ outputPath='./output/'
 outputType='.csv'           # .txt or .csv supported
 debuggingPath=outputPath+'Result_'+timestr+"/"
 imageWidthLim = [400, 800]  # Max should be 2xMin+
-debugging = False           #enable view and save of intermediary images and text
+debugging = True           #enable view and save of intermediary images and text
 
 ###################################
 

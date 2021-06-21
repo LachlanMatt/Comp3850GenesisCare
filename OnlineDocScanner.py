@@ -127,7 +127,7 @@ for name in names:
         # imageArray = ([img,imgThres],
         #           [imgContour,imgWarped])
         imageArray = ([imgContour, imgWarped])
-        cv2.imshow(name+" ImageWarped", imgWarped)
+        # cv2.imshow(name+" ImageWarped", imgWarped)
     else:
         # imageArray = ([img, imgThres],
         #               [img, img])
