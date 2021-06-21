@@ -54,6 +54,7 @@ def importTestCase():
     return fileList[0]
 
 #loop over the output result and the testcase arrays 
+#sort and compare results that are both in the input and testset
 #element by element compare them using regex (if either is a subset of the other)
 #use regex to remove single brackets and other grammar that can break regex statements
 #return the percentage of times a match was found 
@@ -104,7 +105,7 @@ def calculateAccuracy(Result, Testcase):
     return round(count/total*100, 2)
 
 #run the main program
-# PE.runProgram()
+PE.runProgram()
 
 #import the data and calculate the accuracy
 arr1 = importResult()
